@@ -1,3 +1,14 @@
+# To use this template:
+
+```bash
+npx degit jeanmarcboite/sveltejs-electron-template.git electron-app
+cd electron-app
+yarn
+yarn start
+```
+
+# To reproduce:
+
 - read https://fireship.io/snippets/svelte-electron-setup/
 
 ```bash
