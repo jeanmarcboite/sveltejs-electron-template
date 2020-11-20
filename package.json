@@ -3,7 +3,7 @@
   "productName": "sveltejs-electron-template",
   "version": "1.0.0",
   "description": "My Electron application description",
-  "main": "electron.js",
+  "main": "src/main/electron.js",
   "scripts": {
     "start": "concurrently \"npm:svelte-dev\" \"electron-forge start\"",
     "package": "electron-forge package",
