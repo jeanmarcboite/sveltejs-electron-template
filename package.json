@@ -63,6 +63,7 @@
     "@rollup/plugin-node-resolve": "^10.0.0",
     "autoprefixer": "^10.0.2",
     "electron": "^11.0.1",
+    "electron-store": "^6.0.1",
     "postcss": "^8.1.8",
     "postcss-cli": "^8.3.0",
     "postcss-import": "12",
