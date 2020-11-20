@@ -5,6 +5,8 @@ import livereload from 'rollup-plugin-livereload'
 import { terser } from 'rollup-plugin-terser'
 import postcss from 'rollup-plugin-postcss'
 import sveltePreprocess from 'svelte-preprocess'
+import builtins from 'rollup-plugin-node-builtins'
+import globals from 'rollup-plugin-node-globals'
 
 const production = !process.env.ROLLUP_WATCH
 
@@ -20,7 +22,7 @@ function serve() {
       if (server) return
       server = require('child_process').spawn(
         'npm',
-        ['run', 'svelte-start', '--', '--dev'],
+        ['run', 'start', '--', '--dev'],
         {
           stdio: ['ignore', 'inherit', 'inherit'],
           shell: true,
@@ -42,6 +44,8 @@ export default {
     file: 'public/build/bundle.js',
   },
   plugins: [
+    builtins(),
+    globals(),
     svelte({
       preprocess: sveltePreprocess({
         // https://github.com/kaisermann/svelte-preprocess/#user-content-options
