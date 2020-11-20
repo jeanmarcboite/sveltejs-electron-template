@@ -397,16 +397,16 @@ var app = (function () {
     			a = element("a");
     			a.textContent = "Svelte tutorial";
     			t9 = text("\n    to learn how to build Svelte apps.");
-    			attr_dev(h1, "class", "svelte-km5pab");
+    			attr_dev(h1, "class", "svelte-1ln8a8u");
     			add_location(h1, file, 35, 2, 2088);
     			attr_dev(span, "class", "text-red-800");
     			add_location(span, file, 36, 33, 2144);
-    			attr_dev(p0, "class", "tw svelte-km5pab");
+    			attr_dev(p0, "class", "tw svelte-1ln8a8u");
     			add_location(p0, file, 36, 2, 2113);
     			attr_dev(a, "href", "https://svelte.dev/tutorial");
     			add_location(a, file, 39, 4, 2208);
     			add_location(p1, file, 37, 2, 2186);
-    			attr_dev(main, "class", "svelte-km5pab");
+    			attr_dev(main, "class", "svelte-1ln8a8u");
     			add_location(main, file, 34, 0, 2079);
     		},
     		l: function claim(nodes) {
