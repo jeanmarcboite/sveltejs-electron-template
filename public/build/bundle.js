@@ -46,10 +46,6 @@ var app = (function () {
     function space() {
         return text(' ');
     }
-    function listen(node, event, handler, options) {
-        node.addEventListener(event, handler, options);
-        return () => node.removeEventListener(event, handler, options);
-    }
     function attr(node, attribute, value) {
         if (value == null)
             node.removeAttribute(attribute);
@@ -274,19 +270,6 @@ var app = (function () {
         dispatch_dev('SvelteDOMRemove', { node });
         detach(node);
     }
-    function listen_dev(node, event, handler, options, has_prevent_default, has_stop_propagation) {
-        const modifiers = options === true ? ['capture'] : options ? Array.from(Object.keys(options)) : [];
-        if (has_prevent_default)
-            modifiers.push('preventDefault');
-        if (has_stop_propagation)
-            modifiers.push('stopPropagation');
-        dispatch_dev('SvelteDOMAddEventListener', { node, event, handler, modifiers });
-        const dispose = listen(node, event, handler, options);
-        return () => {
-            dispatch_dev('SvelteDOMRemoveEventListener', { node, event, handler, modifiers });
-            dispose();
-        };
-    }
     function attr_dev(node, attribute, value) {
         attr(node, attribute, value);
         if (value == null)
@@ -391,9 +374,6 @@ var app = (function () {
     	let t4;
     	let span;
     	let t6;
-    	let button;
-    	let mounted;
-    	let dispose;
 
     	const block = {
     		c: function create() {
@@ -407,18 +387,15 @@ var app = (function () {
     			t4 = text("tailwind included");
     			span = element("span");
     			span.textContent = "!";
-    			t6 = space();
-    			button = element("button");
-    			button.textContent = "Action";
-    			attr_dev(h1, "class", "svelte-7quawc");
-    			add_location(h1, file, 40, 2, 2249);
+    			t6 = text("\n  Hot reload!");
+    			attr_dev(h1, "class", "svelte-3fpl6o");
+    			add_location(h1, file, 35, 2, 2088);
     			attr_dev(span, "class", "text-red-800");
-    			add_location(span, file, 41, 33, 2305);
-    			attr_dev(p, "class", "tw svelte-7quawc");
-    			add_location(p, file, 41, 2, 2274);
-    			add_location(button, file, 42, 2, 2347);
-    			attr_dev(main, "class", "svelte-7quawc");
-    			add_location(main, file, 39, 0, 2240);
+    			add_location(span, file, 36, 33, 2144);
+    			attr_dev(p, "class", "tw svelte-3fpl6o");
+    			add_location(p, file, 36, 2, 2113);
+    			attr_dev(main, "class", "svelte-3fpl6o");
+    			add_location(main, file, 34, 0, 2079);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -434,12 +411,6 @@ var app = (function () {
     			append_dev(p, t4);
     			append_dev(p, span);
     			append_dev(main, t6);
-    			append_dev(main, button);
-
-    			if (!mounted) {
-    				dispose = listen_dev(button, "click", /*onClick*/ ctx[1], false, false, false);
-    				mounted = true;
-    			}
     		},
     		p: function update(ctx, [dirty]) {
     			if (dirty & /*name*/ 1) set_data_dev(t1, /*name*/ ctx[0]);
@@ -448,8 +419,6 @@ var app = (function () {
     		o: noop,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(main);
-    			mounted = false;
-    			dispose();
     		}
     	};
 
@@ -468,13 +437,6 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("App", slots, []);
     	let { name } = $$props;
-    	const electron = window.require("electron");
-
-    	const onClick = () => {
-    		const args = ["arguments"];
-    		ipcRenderer.invoke("perform-action", ...args);
-    	};
-
     	const writable_props = ["name"];
 
     	Object.keys($$props).forEach(key => {
@@ -485,7 +447,7 @@ var app = (function () {
     		if ("name" in $$props) $$invalidate(0, name = $$props.name);
     	};
 
-    	$$self.$capture_state = () => ({ Tailwind, name, electron, onClick });
+    	$$self.$capture_state = () => ({ Tailwind, name });
 
     	$$self.$inject_state = $$props => {
     		if ("name" in $$props) $$invalidate(0, name = $$props.name);
@@ -495,7 +457,7 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [name, onClick];
+    	return [name];
     }
 
     class App extends SvelteComponentDev {

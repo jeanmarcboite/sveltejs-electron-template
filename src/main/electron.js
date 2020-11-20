@@ -8,6 +8,9 @@ if (require('electron-squirrel-startup')) {
   // eslint-disable-line global-require
   app.quit()
 }
+require('electron-reload')(path.join(__dirname, '../..'), {
+  electron: path.join(__dirname, '../../node_modules', '.bin', 'electron'),
+})
 
 const createWindow = () => {
   // Create the browser window.
@@ -77,8 +80,3 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
-
-require('electron-reload')(__dirname, {
-  electron: path.join(__dirname, '../node_modules', '.bin', 'electron'),
-  awaitWriteFinish: true,
-})
