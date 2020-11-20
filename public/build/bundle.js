@@ -370,14 +370,10 @@ var app = (function () {
     	let t1;
     	let t2;
     	let t3;
-    	let p0;
+    	let p;
     	let t4;
     	let span;
     	let t6;
-    	let p1;
-    	let t7;
-    	let a;
-    	let t9;
 
     	const block = {
     		c: function create() {
@@ -387,26 +383,18 @@ var app = (function () {
     			t1 = text(/*name*/ ctx[0]);
     			t2 = text("!");
     			t3 = space();
-    			p0 = element("p");
+    			p = element("p");
     			t4 = text("tailwind included");
     			span = element("span");
     			span.textContent = "!";
-    			t6 = space();
-    			p1 = element("p");
-    			t7 = text("Visit the\n    ");
-    			a = element("a");
-    			a.textContent = "Svelte tutorial";
-    			t9 = text("\n    to learn how to build Svelte apps.");
-    			attr_dev(h1, "class", "svelte-1ln8a8u");
+    			t6 = text("\n  Hot reload");
+    			attr_dev(h1, "class", "svelte-1qal1dx");
     			add_location(h1, file, 35, 2, 2088);
     			attr_dev(span, "class", "text-red-800");
     			add_location(span, file, 36, 33, 2144);
-    			attr_dev(p0, "class", "tw svelte-1ln8a8u");
-    			add_location(p0, file, 36, 2, 2113);
-    			attr_dev(a, "href", "https://svelte.dev/tutorial");
-    			add_location(a, file, 39, 4, 2208);
-    			add_location(p1, file, 37, 2, 2186);
-    			attr_dev(main, "class", "svelte-1ln8a8u");
+    			attr_dev(p, "class", "tw svelte-1qal1dx");
+    			add_location(p, file, 36, 2, 2113);
+    			attr_dev(main, "class", "svelte-1qal1dx");
     			add_location(main, file, 34, 0, 2079);
     		},
     		l: function claim(nodes) {
@@ -419,14 +407,10 @@ var app = (function () {
     			append_dev(h1, t1);
     			append_dev(h1, t2);
     			append_dev(main, t3);
-    			append_dev(main, p0);
-    			append_dev(p0, t4);
-    			append_dev(p0, span);
+    			append_dev(main, p);
+    			append_dev(p, t4);
+    			append_dev(p, span);
     			append_dev(main, t6);
-    			append_dev(main, p1);
-    			append_dev(p1, t7);
-    			append_dev(p1, a);
-    			append_dev(p1, t9);
     		},
     		p: function update(ctx, [dirty]) {
     			if (dirty & /*name*/ 1) set_data_dev(t1, /*name*/ ctx[0]);
