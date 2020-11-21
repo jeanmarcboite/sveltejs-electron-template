@@ -1,6 +1,7 @@
 <script>
   import Tailwind from "./Tailwind.svelte";
   export let name;
+  import { hello } from "./ipc";
 </script>
 
 <style lang="postcss">
@@ -32,5 +33,5 @@
 <main>
   <h1>Hello {name}!</h1>
   <p class="tw">tailwind included<span class="text-red-800">!</span></p>
-  Hot reload!
+  <button on:click={hello}>hello</button>
 </main>
